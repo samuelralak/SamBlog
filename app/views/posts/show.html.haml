@@ -8,5 +8,10 @@
 			.article-content
 				= @post.content
 		.clearfix
+		#comments
+		- unless user_signed_in?
+			= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook)
+		- else
+			= link_to "sign out",  destroy_user_session_path, method: "delete"
 	.col-xs-6.col-md-4
 		= render 'layouts/sidebar'
