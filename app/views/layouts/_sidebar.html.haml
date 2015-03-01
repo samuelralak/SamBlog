@@ -1,0 +1,65 @@
+%aside.aside-column.col-md-10.col-md-offset-2
+	%article.widget-search-form.widget
+		%header
+			%h1
+				= "Search"
+		%form.search-form.form-inline
+			.form-group
+				%input{:id => 'q', :name => 'q', :type => 'text', :value => '', :class => "form-control"}
+				%button{:type => 'submit'}
+					= "Go"
+
+	%article.widget-tag-cloud.widget
+		%header
+			%h1
+				= "Tag Cloud"
+		%ul.tagcloud
+			%li.tagCloud-tag.tagCloud-1
+				= link_to 'London', '#'
+			%li.tagCloud-tag.tagCloud-5
+				= link_to 'Edinburgh', '#'
+			%li.tagCloud-tag.tagCloud-3
+				= link_to 'Hamburg', '#'
+			%li.tagCloud-tag.tagCloud-4
+				= link_to 'Krakow', '#'
+			%li.tagCloud-tag.tagCloud-2
+				= link_to 'Fortaleza', '#'
+			%li.tagCloud-tag.tagCloud-1
+				= link_to 'Winterthur', '#'
+			%li.tagCloud-tag.tagCloud-2
+				= link_to 'St.Gallen', '#'
+			%li.tagCloud-tag.tagCloud-1
+				= link_to 'Jakarta', '#'
+			%li.tagCloud-tag.tagCloud-5
+				= link_to 'Bangkok', '#'
+			%li.tagCloud-tag.tagCloud-3
+				= link_to 'Belgrad', '#'
+			%li.tagCloud-tag.tagCloud-4
+				= link_to 'Vienna', '#'
+			%li.tagCloud-tag.tagCloud-4
+				= link_to 'Marrakech', '#'
+			%li.tagCloud-tag.tagCloud-2
+				= link_to 'Miami', '#'
+
+	%article.widget-blogarchives.widget
+		%header
+			%h1
+				= "Archive"
+		%ul
+			%li
+				= link_to 'March 2015', '#'
+			%li
+				= link_to 'February 2015', '#'
+			%li
+				= link_to 'January 2015', '#'
+			%li
+				= link_to 'December 2014', '#'
+			%li
+				= link_to 'November 2014', '#'
+
+	%article.widget-html-widget.widget
+		%header
+			%h1
+				= "Side note"
+		%p
+			= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a nibh ut tortor dapibus vestibulum. Aliquam vel sem nibh. Suspendisse vel condimentum tellus."
