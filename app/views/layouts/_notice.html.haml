@@ -1,0 +1,7 @@
+- flash.each do |type, message|
+	.row
+		.col-lg-12.col-md-11.col-sm-10
+			.alert{ :class => "#{bootstrap_class_for(type)} fade in"}
+				%button{ :class => "close", :data => { :dismiss => "alert"}}
+					= "x"
+				= message
