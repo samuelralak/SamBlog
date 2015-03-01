@@ -1,8 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "custom";
 
 body {
 	
 	padding-top: 60px;
 	padding-bottom: 60px;
+}
+
+.header {
+	margin-bottom: 30px;
+	
+
+	h3 {
+		padding-bottom: 19px;
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 40px;
+	}
+}
+
+.article-content {
+    text-align: justify;
+    text-justify: inter-word;
 }
