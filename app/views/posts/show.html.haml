@@ -9,9 +9,18 @@
 				= @post.content
 		.clearfix
 		#comments
+			%h2.comment-count
+				= pluralize(@post.root_comments.count, 'comment')
 		- unless user_signed_in?
-			= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook)
+			.panel.panel-default
+				.panel-body
+					%p.text-muted{:style => "margin-left: 15px"}
+						= "Log in to leave a comment..."
+					
+					.col-md-6.col-xs-12
+						= link_to "#{fa_icon 'facebook 2x', class: 'pull-left', style: 'margin-top: -3px;'}Sign in with facebook".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-primary btn-block"
 		- else
 			= link_to "sign out",  destroy_user_session_path, method: "delete"
+		
 	.col-xs-6.col-md-4
 		= render 'layouts/sidebar'

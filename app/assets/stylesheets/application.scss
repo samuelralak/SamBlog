@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import "custom";
 
 body {
@@ -28,3 +29,19 @@ body {
 .alert-dismissable .close {
 	top: -28px !important;
 }
+
+.panel-default {
+	border: none;
+}
+
+.btn-social {
+	margin-bottom: 10px;
+	margin-top: -10px;
+	height: 45px;
+	padding: 9px; 
+	font-size: 17px;
+	text-decoration: none;
+
+	
+}
+
