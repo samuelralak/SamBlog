@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :posts
+	post '/new_comment/:post_id', to: 'comments#add_comment', as: 'add_new_comment'
+	# delete '/items/:item_id/delete_image/:id', to: 'items#destroy_image', as: 'destroy_image'
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  devise_for :admins
+	
+	devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+	devise_for :admins
 
-  root 'posts#index'
+	resources :posts
+	root 'posts#index'
 end

@@ -9,18 +9,50 @@
 				= @post.content
 		.clearfix
 		#comments
+			- unless user_signed_in?
+				.panel.panel-default{:style => "margin-top: 30px;"}
+					.panel-body
+						%p.text-muted{:style => "margin-left: 15px"}
+							= "Log in to leave a comment..."
+						
+						.col-md-6.col-xs-12
+							= link_to "#{fa_icon 'facebook 2x', class: 'pull-left', style: 'margin-top: -3px;'}Sign in with facebook".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-primary btn-block"
+			- else
+				= form_tag add_new_comment_path(@post), method: :post, class: 'comment-form' do
+					%fieldset.who
+						%legend#add-comment
+							= "Add a comment"
+					%fieldset.what
+						.panel.panel-default
+							.panel-heading
+								.pull-right
+									= link_to "#{fa_icon 'sign-out'}".html_safe,  destroy_user_session_path, method: "delete"
+								.panel-title
+									.media
+										.media-left.media-middle
+											= image_tag(current_user.avatar, class: 'media-object')
+										.media-body
+											%h3.media-heading.pull-left.comment-box
+												= current_user.fullname.upcase
+							.panel-body
+								= text_area_tag :body, params[:body], rows: "5", cols: "30", id: 'comment-text', placeholder: "  leave a comment.."
+								= button_tag 'Submit', name: nil, class: "primaryAction"
+
 			%h2.comment-count
 				= pluralize(@post.root_comments.count, 'comment')
-		- unless user_signed_in?
-			.panel.panel-default
-				.panel-body
-					%p.text-muted{:style => "margin-left: 15px"}
-						= "Log in to leave a comment..."
-					
-					.col-md-6.col-xs-12
-						= link_to "#{fa_icon 'facebook 2x', class: 'pull-left', style: 'margin-top: -3px;'}Sign in with facebook".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-primary btn-block"
-		- else
-			= link_to "sign out",  destroy_user_session_path, method: "delete"
+			%ul.comments
+				- @post.root_comments.each do |comment|
+					%li
+						%article.comment{:id => "comment-#{comment.try(:id)}"}
+							%header
+								%h4
+									%span.who
+										= link_to comment.user.try(:fullname), '#'
+									%span.when
+										= " said <time datetime='#{comment.try(:created_at)}'>#{time_ago_in_words(comment.try(:created_at))}</time> ago".html_safe
+							%p.text
+								.article-content
+									= comment.try(:body)
 		
 	.col-xs-6.col-md-4
 		= render 'layouts/sidebar'
