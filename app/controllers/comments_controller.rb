@@ -8,19 +8,34 @@ class CommentsController < ApplicationController
 
 		if @comment.save
 			respond_to	do |format|
-				format.html { redirect_to post_path(@post) }
-				format.json { render json: @comment, status: :success }
+				format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+				format.json { render json: @comment, status: :success, location: @post }
 			end
 		else
 			respond_to	do |format|
-				format.html { redirect_to post_path(@post) }
+				format.html { redirect_to @post, flash: { error: "An error occured while creating comment" } }
 				format.json { render json: @comment.errors, status: :unprocessable_entity }
 			end
 		end
 	end
 
 	def add_child_comment
-		
+		@parent = Comment.find(params[:parent_id])
+		@comment = Comment.build_from( @parent.commentable, current_user.id, params[:body])
+
+		if @comment.save
+			@comment.move_to_child_of(@parent)
+
+			respond_to	do |format|
+				format.html { redirect_to @parent.commentable, notice: 'Reply was successfully created.' }
+				format.json { render json: @comment, status: :success, location: @post }
+			end
+		else
+			respond_to	do |format|
+				format.html { redirect_to @parent.commentable, flash: { error: "An error occured while creating reply" } }
+				format.json { render json: @comment.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def remove_comment

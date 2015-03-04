@@ -1,0 +1,7 @@
+%article
+	.published
+		= @post.created_at.strftime("%b %d, %Y")
+	%h1
+		= link_to @post.title, @post
+	.article-content
+		= @post.content

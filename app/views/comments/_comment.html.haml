@@ -1,0 +1,43 @@
+%h2.comment-count
+	= pluralize(@post.root_comments.count, 'comment')
+%ul.comments
+	- @post.root_comments.each do |comment|
+		%li
+			%article.comment{:id => "comment-#{comment.try(:id)}"}
+				%header
+					%h4
+						%span.who
+							= link_to comment.user.try(:fullname), '#'
+						%span.when
+							= " said <time datetime='#{comment.try(:created_at)}'>#{time_ago_in_words(comment.try(:created_at))}</time> ago".html_safe
+				%p.text
+					.article-content
+						= comment.try(:body)
+						
+						%ul.list-inline.comment-actions.text-center
+							%li.reply-link{:id => "#{comment.id}"}
+								= "#{fa_icon 'reply'} reply".html_safe
+
+						= form_tag reply_to_comment_path(comment), method: :post, class: 'reply-form', id: "childForm#{comment.id}" do
+							.panel.panel-default
+								.panel-body
+									= text_area_tag :body, params[:body], rows: "2", cols: "30", id: 'comment-text', placeholder: "  leave a reply.."
+									= button_tag 'Submit', name: nil, class: "childAction"
+
+						- if comment.has_children?
+							.container
+								.row
+									.col-xs-12.col-sm-6.col-md-8.zone-content
+										%ul.comments
+											- comment.children.each do |child|
+												%li
+													.media.child-media
+														.media-body
+															%h4.media-heading
+																%span.who
+																	= link_to child.user.try(:fullname), '#'
+																%span.when
+																	= " replied <time datetime='#{comment.try(:created_at)}'>#{time_ago_in_words(child.try(:created_at))}</time> ago".html_safe
+
+															%p.text.article-content
+																= child.try(:body)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	post '/new_comment/:post_id', to: 'comments#add_comment', as: 'add_new_comment'
+	post '/new_comment/:post_id',     to: 'comments#add_comment',       as: 'add_new_comment'
+	post '/child_comment/:parent_id', to: 'comments#add_child_comment', as: 'reply_to_comment'
 	# delete '/items/:item_id/delete_image/:id', to: 'items#destroy_image', as: 'destroy_image'
 
 	

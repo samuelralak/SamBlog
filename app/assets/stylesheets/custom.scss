@@ -710,6 +710,17 @@ ul.comments {
     width:300px;
  }
 
+.reply-form {
+  padding-left: 55px;
+
+  button.childAction {
+    height:40px;
+    margin-top:10px;
+    width: 150px;
+    text-transform: lowercase !important;
+  }
+}
+
 @media (max-width: 767px) { 
 	.comment-form button.primaryAction
 	{
@@ -729,6 +740,27 @@ ul.comments {
 
 fieldset.what {
 	text-align: center;
+}
+
+.comment-actions {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+
+  li {
+    color: #9b7188;
+    text-decoration: none;
+
+    &:hover {
+      color: #b2b8c1;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.reply-form {
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 
@@ -813,6 +845,10 @@ aside.aside-column article.widget header h1 {
 }
 
 
+.child-media {
+    margin-top: 20px;
+    padding-left: 40px;
+}
 
 /* Bootstrap Carousel Fix */
 .carousel-control {

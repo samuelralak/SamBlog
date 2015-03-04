@@ -1,0 +1,7 @@
+.panel.panel-default{:style => "margin-top: 30px;"}
+	.panel-body
+		%p.text-muted{:style => "margin-left: 15px"}
+			= "Log in to leave a comment..."
+						
+		.col-md-6.col-xs-12
+			= link_to "#{fa_icon 'facebook 2x', class: 'pull-left', style: 'margin-top: -3px;'}Sign in with facebook".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-primary btn-block"

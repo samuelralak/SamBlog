@@ -1,7 +1,7 @@
 module ApplicationHelper
 	#style flash messages, error messages and alerts
 	def bootstrap_class_for(flash_type)
-		if flash_type == "alert"
+		if flash_type == "alert" || flash_type == "error"
 			"alert alert-dismissable alert-danger"
 		elsif flash_type == "notice"
 			"alert alert-dismissable alert-success"
