@@ -36,10 +36,16 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_commentable_with_threading (2.0.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
     arel (6.0.0)
     autoprefixer-rails (5.1.7)
       execjs
       json
+    awesome_nested_set (3.0.1)
+      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -72,13 +78,21 @@ GEM
     execjs (2.3.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    figaro (1.0.0)
+      thor (~> 0.14)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     haml (4.0.5)
       tilt
+    hashie (2.1.2)
     hike (1.2.3)
+    httpauth (0.2.1)
     i18n (0.7.0)
     jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
@@ -88,6 +102,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
+    jwt (0.1.13)
+      multi_json (>= 1.5)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -96,8 +112,23 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.18.1)
     populator (1.0.0)
@@ -177,15 +208,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable_with_threading
   bootstrap-sass (~> 3.3.3)
   byebug
   coffee-rails (~> 4.1.0)
   devise
   faker
+  figaro
+  font-awesome-rails
   friendly_id (~> 5.1.0)
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth
+  omniauth-facebook
   pg
   populator
   rails (= 4.2.0)

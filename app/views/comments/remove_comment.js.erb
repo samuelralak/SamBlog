@@ -1,0 +1,5 @@
+$("#comment<%= @comment.id %>").remove();
+if ( $("#child<%= @comment.id %>").length > 0 ) {
+	$("#child<%= @comment.id %>").remove();
+};
+$(".comment-count").html('<%= pluralize(@commentable.root_comments.count, "comment") %>');

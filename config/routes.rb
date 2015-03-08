@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :posts
+	post   '/new_comment/:post_id',     to: 'comments#add_comment',       as: 'add_new_comment'
+	post   '/child_comment/:parent_id', to: 'comments#add_child_comment', as: 'reply_to_comment'
+	delete '/comment/:id',              to: 'comments#remove_comment',    as: 'delete_comment'
 
-  devise_for :admins
+	
+	devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+	devise_for :admins
 
-  root 'posts#index'
+	resources :posts
+	root 'posts#index'
 end

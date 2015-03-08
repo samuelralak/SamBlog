@@ -1,0 +1,6 @@
+%h2.comment-count
+	= pluralize(@post.root_comments.count, 'comment')
+%ul.comments{ :id => "parentComments" }
+	- @post.root_comments.each do |comment|
+		= render 'comments/parent_comment.html.haml', comment: comment
+										

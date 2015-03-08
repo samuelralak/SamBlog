@@ -1,22 +1,6 @@
 .row.main-content
   .col-xs-12.col-sm-6.col-md-8.zone-content
-    %ul.blog-posts
-      - @posts.each do |post|
-        %li
-          %article.blog-post
-            .published
-              = post.created_at.strftime("%b %d, %Y")
-            %h1
-              = link_to post.title, post
-            %p.article-content
-              = "#{post.content.truncate(250, omission: "... #{link_to('continued', post)}")}".html_safe
-            %p.tags
-              %span
-                = "Tags:"
-              = link_to "lorem", '#'
-              = link_to "ipsum", '#'
-              = link_to "some", '#'
-              = link_to "tags", '#'
+    = render 'posts/posts'
   .col-xs-6.col-md-4
     = render 'layouts/sidebar'
 

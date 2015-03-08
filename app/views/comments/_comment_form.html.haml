@@ -1,0 +1,19 @@
+= form_tag add_new_comment_path(@post), method: :post, class: 'comment-form', id: 'parentForm', remote: true do
+	%fieldset.who
+		%legend#add-comment
+			= "Add a comment"
+	%fieldset.what
+		.panel.panel-default
+			.panel-heading
+				.pull-right
+					= link_to "#{fa_icon 'sign-out'}".html_safe,  destroy_user_session_path, method: "delete"
+				.panel-title
+					.media
+						.media-left.media-middle
+							= image_tag(current_user.avatar, class: 'media-object')
+						.media-body
+							%h3.media-heading.pull-left.comment-box
+								= current_user.fullname.upcase
+			.panel-body
+				= text_area_tag :body, params[:body], rows: "5", cols: "30", id: 'comment-text', placeholder: "  leave a comment.."
+				= button_tag 'Submit', name: nil, class: "primaryAction"

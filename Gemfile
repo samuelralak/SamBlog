@@ -10,6 +10,7 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'haml'
+gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -27,12 +28,18 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem "rolify"
 
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'populator'
 gem 'faker'
+
+gem "figaro"
+
+gem 'acts_as_commentable_with_threading'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

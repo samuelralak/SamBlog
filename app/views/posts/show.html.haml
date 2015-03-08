@@ -1,12 +1,8 @@
 .row.main-content
 	.col-xs-12.col-sm-6.col-md-8.zone-content
-		%article
-			.published
-				= @post.created_at.strftime("%b %d, %Y")
-			%h1
-				= link_to @post.title, @post
-			.article-content
-				= @post.content
+		= render 'posts/post'
 		.clearfix
+		= render 'comments/comments'
+		
 	.col-xs-6.col-md-4
 		= render 'layouts/sidebar'

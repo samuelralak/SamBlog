@@ -1,0 +1,6 @@
+console.log('<%= @comment.inspect %>')
+$("#parentComments").append("<%= j render 'comments/parent_comment', comment: @comment %>");
+$('textarea').filter('[id*=comment-text]').val('');
+$('body,html').animate({
+	scrollTop: $("#parentComments #comment<%= @comment.id %>").offset().top + 'px'
+}, 1000);

@@ -1,0 +1,10 @@
+console.log('<%= @comment.inspect %>')
+if ( $("ul #child_comments<%= @parent.id %>").length == 0 ) {
+	$("#children_<%= @parent.id %>").append("<%= j render 'comments/children', comment: @parent %>");
+} else{
+	$("ul #child_comments<%= @parent.id %>").append("<%= j render 'comments/child_comment', child: @comment %>");
+};
+$('body,html').animate({
+	scrollTop: $("#child_comments<%= @comment.parent_id %> li:last-child").offset().top + 'px'
+}, 1000);
+$('textarea').filter('[id*=comment-text]').val('');
