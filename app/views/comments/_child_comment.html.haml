@@ -6,6 +6,9 @@
 					= link_to child.user.try(:fullname), '#'
 				%span.when
 					= " replied <time datetime='#{child.try(:created_at)}'>#{time_ago_in_words(child.try(:created_at))}</time> ago".html_safe
+					- if child.user.eql? current_user
+						.pull-right
+							= link_to "#{fa_icon 'trash'} delete".html_safe,  delete_comment_path(child), remote: true,method: :delete, data: { confirm: 'Are you sure?' }
 
 			%p.text.article-content
 				= child.try(:body)

@@ -43,10 +43,19 @@ class CommentsController < ApplicationController
 	end
 
 	def remove_comment
-		
-	end
+		@comment = Comment.find(params[:id])
+		@commentable = @comment.commentable
 
-	def remove_child_comment
+		if @comment.has_children?
+			@comment.children.destroy_all
+		end
 		
+		@comment.destroy
+
+		respond_to do |format|
+			format.html { redirect_to @commentable, notice: 'comment was successfully destroyed.' }
+			format.json { head :no_content }
+			format.js
+		end
 	end
 end
