@@ -1,0 +1,6 @@
+console.log('<%= @comment.inspect %>')
+$("ul #child_comments<%= @comment.parent_id %>").append("<%= j render 'comments/child_comment', child: @comment %>");
+$("#childForm<%= @comment.parent_id %>").hide();
+$('body,html').animate({
+	scrollTop: $("#child_comments<%= @comment.parent_id %> li:last-child").offset().top + 'px'
+}, 1000);

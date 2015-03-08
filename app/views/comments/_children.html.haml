@@ -1,0 +1,7 @@
+- if comment.has_children?
+	.container
+		.row
+			.col-xs-12.col-sm-6.col-md-8.zone-content
+				%ul.comments{ :id => "child_comments#{comment.id}" }
+					- comment.children.each do |child|
+						= render 'comments/child_comment', child: child

@@ -1,0 +1,11 @@
+%li{ :id => "child#{child.try(:id)}" }
+	.media.child-media
+		.media-body
+			%h4.media-heading
+				%span.who
+					= link_to child.user.try(:fullname), '#'
+				%span.when
+					= " replied <time datetime='#{child.try(:created_at)}'>#{time_ago_in_words(child.try(:created_at))}</time> ago".html_safe
+
+			%p.text.article-content
+				= child.try(:body)

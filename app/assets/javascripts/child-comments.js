@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("ready page:change", function() {
 	// when we load the page, hide all the items with the class of 'reply-form'
 	$('.reply-form').hide();
 
@@ -6,7 +6,6 @@ $(document).ready(function() {
 	$('.reply-link').on("click", function() {
 		$('.reply-form').hide();
 		var id = $(this).attr("id");
-		// show the section we are looking at
 		var reply_form = "#childForm" + id;
 		$(reply_form).show();
 	});

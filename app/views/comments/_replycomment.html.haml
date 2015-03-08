@@ -1,0 +1,10 @@
+- if user_signed_in? 
+	%ul.list-inline.comment-actions.text-center
+		%li.reply-link{:id => "#{comment.id}"}
+			= "#{fa_icon 'reply'} reply".html_safe
+
+	= form_tag(reply_to_comment_path(comment), method: :post, class: 'reply-form', id: "childForm#{comment.id}", remote: true) do
+		.panel.panel-default
+			.panel-body
+				= text_area_tag :body, params[:body], rows: "2", cols: "30", id: 'comment-text', placeholder: "  leave a reply.."
+				= button_tag 'Submit', name: nil, class: "childAction"
